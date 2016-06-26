@@ -53,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
             userIdMatcher = userIdPattern.matcher(haystack);
             beaconIdMatcher = beaconIdPattern.matcher(haystack);
 
-            String userId = "you suck at programming";
-            String beaconId = "you suck at programming";
+            String userId = "";
+            String beaconId = "";
 
             if (userIdMatcher.find()){
                  userId = userIdMatcher.group(1);
@@ -82,6 +82,10 @@ public class MainActivity extends AppCompatActivity {
         String requestUrl = "http://gocarinthia.cicika.info/user/" + userId + "/" + beaconId;
 
         String apiResult = getApiResponse(requestUrl);
+
+        if(userId.isEmpty() || beaconId.isEmpty()){
+            return false;
+        }
 
 
         if (!apiResult.isEmpty()) {
